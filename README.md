@@ -68,6 +68,9 @@ rather than at some comfortable-sounding 30s.
 # health of every provider in the pool
 curl -s localhost:8000/healthz | jq
 
+# stream 3s of synthetic audio at it and watch the partials come back
+.venv/bin/python scripts/demo_client.py ws://127.0.0.1:8000/ws/transcribe
+
 # tests + lint
 .venv/bin/python -m pytest
 .venv/bin/python -m ruff check .
@@ -98,6 +101,7 @@ ignored rather than fatal — a client bug shouldn't end a consultation.
 ## Deploying
 
 ```bash
+docker build -t sikia-lab .          # 245MB, non-root, multi-stage
 ./scripts/deploy_cloudrun.sh
 ```
 
