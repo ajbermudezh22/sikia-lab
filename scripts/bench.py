@@ -41,10 +41,7 @@ async def measure(label: str, router: Router, iterations: int = ITERATIONS) -> N
     p50 = statistics.median(samples)
     p95 = samples[int(len(samples) * 0.95)]
     p99 = samples[int(len(samples) * 0.99)]
-    print(
-        f"{label:<34} p50={p50:6.2f}ms  p95={p95:6.2f}ms  "
-        f"p99={p99:6.2f}ms  failures={failures}"
-    )
+    print(f"{label:<34} p50={p50:6.2f}ms  p95={p95:6.2f}ms  p99={p99:6.2f}ms  failures={failures}")
 
 
 async def main() -> None:

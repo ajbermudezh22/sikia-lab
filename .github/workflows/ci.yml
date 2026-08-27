@@ -14,20 +14,21 @@ jobs:
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
+          python-version: "3.12"
 
       - name: Install
-        run: uv pip install --system -e ".[dev]"
+        run: uv sync --all-extras
 
       - name: Lint
         run: |
-          ruff check .
-          ruff format --check .
+          uv run ruff check .
+          uv run ruff format --check .
 
       - name: Test
-        run: pytest
+        run: uv run pytest
 
       - name: Bench (smoke — catches routing regressions)
-        run: python scripts/bench.py
+        run: uv run python scripts/bench.py
 
   docker:
     runs-on: ubuntu-latest
