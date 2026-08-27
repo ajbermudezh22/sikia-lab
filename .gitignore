@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+.env
+.env.*
+!.env.example
+
+# Local interview + working notes, and any codebase cloned in for reading.
+notes/
+workspace/
